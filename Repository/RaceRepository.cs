@@ -37,12 +37,12 @@ namespace RunGroopWebApp.Repository
 
         public async Task<Race> GetByIDAsync(int id)
         {
-            return await _context.Races.Include(i => i.Address).FirstOrDefaultAsync();
+            return await _context.Races.Where(i => i.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task<Race> GetByIDAsyncNoTracking(int id)
         {
-            return await _context.Races.Include(i => i.Address).AsNoTracking().FirstOrDefaultAsync();
+            return await _context.Races.Where(i => i.Id == id).AsNoTracking().FirstOrDefaultAsync();
         }
 
         public bool Save()
